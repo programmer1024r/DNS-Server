@@ -27,9 +27,12 @@ def run():
     packets = sniff(count=1, lfilter=is_PTR_DNS, prn=print_packet)
     dns_request = packets[0] # third packet
     dns_request.show()
-    dns_request[DNSQR].qname.decode()
+    print(get_searched_domain(dns_request))
+    
+    
     # Generate second respond
     respond = generate_respond(MY_IPV4, dns_request)
+
     
     # -----------------------------------------------------------------
 # Make this file act like a library

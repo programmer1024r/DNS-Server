@@ -2,8 +2,22 @@ import socket
 from scapy.all import *
 from scapy.layers.dns import *
 from consts import MY_IPV4
+import re
 
-
+def get_searched_domain(dns_request):
+    """
+    Use: 
+    Input: 
+    Output: 
+    """
+    domain_to_search = dns_request[DNSQR].qname.decode()
+    try:
+        found = re.search('(.+?).in-addr.arpa.', domain_to_search).group(1)
+    except AttributeError:
+    
+        found = '' # apply your error handling
+    
+    return found
 
 def is_PTR_DNS(packet):
     """
