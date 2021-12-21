@@ -1,0 +1,1 @@
+MY_IPV4 = "10.100.102.26" #socket.gethostbyname(socket.gethostname())

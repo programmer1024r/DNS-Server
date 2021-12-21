@@ -1,0 +1,2 @@
+www.google.com.,8.8.8.8,256
+facebook.com.,157.240.221.35,256
