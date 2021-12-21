@@ -12,7 +12,7 @@ def is_PTR_DNS(packet):
     Output: if it is or not
     """
     return ((DNS in packet) and (DNSQR in packet) and (DNSRR not in packet) and (UDP in packet) and (IP in packet) and
-             (packet[IP].dst == MY_IPV4) and (packet[UDP].dport == 53))
+             (packet[IP].dst == MY_IPV4) and (packet[UDP].dport == 53) and (packet[DNSQR].qtype == 12 or packet[DNSQR].qtype == 1))
 
 def print_packet(packet):
     """
@@ -26,7 +26,7 @@ def generate_respond(ip, dns_request):
     """
     Use: generate a dns respond
     Input: my ip, dns_request
-    Output: the dns respnd
+    Output: the dns respond
     """
     return IP(dst=dns_request[IP].src, src=MY_IPV4) \
     / UDP(dport=dns_request[UDP].sport, sport=53) \
