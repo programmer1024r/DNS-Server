@@ -1,2 +1,2 @@
 # DNS-Server
-A DNS server on python
+A DNS server in python
